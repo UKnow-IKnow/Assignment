@@ -8,5 +8,5 @@
 - Handling validations and loading state.
 - Interceptors for Authenticated Flows.
 
-#Authorization
- Token Authorization with Retrofit and use Okhttp Interceptor to add Authorization token to network requests using retrofit.
+# Authorization
+-Token Authorization with Retrofit and use Okhttp Interceptor to add Authorization token to network requests using retrofit.
