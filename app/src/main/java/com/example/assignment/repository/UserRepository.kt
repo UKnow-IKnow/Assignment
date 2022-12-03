@@ -3,7 +3,6 @@ package com.example.assignment.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.assignment.api.UserAPI
-import com.example.assignment.models.Messages
 import com.example.assignment.models.UserRequest
 import com.example.assignment.models.UserResponse
 import com.example.assignment.utils.NetworkResult

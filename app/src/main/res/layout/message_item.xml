@@ -17,6 +17,14 @@
         android:textSize="18sp" />
 
     <TextView
+        android:id="@+id/timeStamp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show user id"
+        android:textColor="#000"
+        android:textSize="18sp" />
+
+    <TextView
         android:id="@+id/messages"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

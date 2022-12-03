@@ -12,9 +12,9 @@ interface MessageAPI {
 
     @GET("api/messages")
     suspend fun getMessages(
-        @HeaderMap headerMap: HashMap<String,String>
-    ):List<Messages>
+        @HeaderMap headerMap: HashMap<String, String>
+    ): List<Messages>
 
     @POST("api/messages")
-    suspend fun postMessage(@Body messageRequest:MessageRequest) : Response<Messages>
+    suspend fun postMessage(@Body messageRequest: MessageRequest): Response<Messages>
 }

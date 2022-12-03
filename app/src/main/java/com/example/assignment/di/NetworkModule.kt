@@ -19,7 +19,7 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofitBuilder(): Retrofit.Builder{
+    fun provideRetrofitBuilder(): Retrofit.Builder {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)
@@ -27,20 +27,23 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(authInterceptor: AuthInterceptor): OkHttpClient{
+    fun provideOkHttpClient(authInterceptor: AuthInterceptor): OkHttpClient {
         return OkHttpClient.Builder().addInterceptor(authInterceptor).build()
     }
 
     @Singleton
     @Provides
-    fun provideUserAPI(retrofitBuilder: Retrofit.Builder) : UserAPI{
+    fun provideUserAPI(retrofitBuilder: Retrofit.Builder): UserAPI {
         return retrofitBuilder.build().create(UserAPI::class.java)
     }
 
 
     @Singleton
     @Provides
-    fun provideMessageApi(retrofitBuilder: Retrofit.Builder, okHttpClient: OkHttpClient):MessageAPI{
+    fun provideMessageApi(
+        retrofitBuilder: Retrofit.Builder,
+        okHttpClient: OkHttpClient
+    ): MessageAPI {
         return retrofitBuilder
             .client(okHttpClient)
             .build().create(MessageAPI::class.java)
