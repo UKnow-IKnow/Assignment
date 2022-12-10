@@ -7,7 +7,13 @@ import com.example.assignment.databinding.MessageItemBinding
 import com.example.assignment.models.Messages
 
 class MessageViewHolder(val messageItemBinding: MessageItemBinding) :
-    RecyclerView.ViewHolder(messageItemBinding.root)
+    RecyclerView.ViewHolder(messageItemBinding.root){
+        fun bind(message: Messages){
+            messageItemBinding.root.setOnClickListener{
+
+            }
+        }
+    }
 
 class MessageAdapter(var messageList: Array<Messages>) : RecyclerView.Adapter<MessageViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {

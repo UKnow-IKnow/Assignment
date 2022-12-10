@@ -18,5 +18,14 @@
         android:id="@+id/mainFragment"
         android:name="com.example.assignment.ui.messages.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_conversationFragment"
+            app:destination="@id/conversationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/conversationFragment"
+        android:name="com.example.assignment.conversationFragment"
+        android:label="fragment_conversation"
+        tools:layout="@layout/fragment_conversation" />
 </navigation>
