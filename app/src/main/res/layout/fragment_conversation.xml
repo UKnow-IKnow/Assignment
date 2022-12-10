@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <EditText
-            android:id="@+id/txt_description"
+            android:id="@+id/txt_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"

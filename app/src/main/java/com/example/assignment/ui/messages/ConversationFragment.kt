@@ -19,10 +19,16 @@ class ConversationFragment : Fragment() {
     ): View? {
 
         _binding = FragmentConversationBinding.inflate(inflater, container, false)
-
-
-
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setInitialData()
+    }
+
+    private fun setInitialData() {
+        val jsonMessage = arguments?.getString("message")
     }
 
     override fun onDestroyView() {
