@@ -38,9 +38,11 @@ class MessageRepository @Inject constructor(
 
     suspend fun postMessage(messageRequest: MessageRequest) {
         _statusLiveData.postValue(NetworkResult.Loading())
-        val response = messageAPI.postMessage(messageRequest,  hashMapOf(
-            "X-Branch-Auth-Token" to tokenManager.getToken().toString()
-        ))
+        val response = messageAPI.postMessage(
+            messageRequest, hashMapOf(
+                "X-Branch-Auth-Token" to tokenManager.getToken().toString()
+            )
+        )
         if (response.isSuccessful && response.body() != null) {
             _statusLiveData.postValue(NetworkResult.Success(Pair(true, response.body())))
         } else {

@@ -9,21 +9,23 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MessageViewModel @Inject constructor(private val messageRepository: MessageRepository): ViewModel() {
+class MessageViewModel @Inject constructor(private val messageRepository: MessageRepository) :
+    ViewModel() {
 
     val messageLiveData get() = messageRepository.messageLiveData
     val statusLiveData get() = messageRepository.statusLiveData
+
     init {
         getMessage()
     }
 
-    fun getMessage(){
+    fun getMessage() {
         viewModelScope.launch {
             messageRepository.getMessages()
         }
     }
 
-    fun postMessage(messageRequest: MessageRequest){
+    fun postMessage(messageRequest: MessageRequest) {
         viewModelScope.launch {
             messageRepository.postMessage(messageRequest)
         }

@@ -40,25 +40,24 @@ class LoginFragment : Fragment() {
 
         binding.btnLogin.setOnClickListener {
             val validationResult = validateUserInput()
-            if (validationResult.first){
+            if (validationResult.first) {
                 mainViewModel.loginUser(getUserInput())
-            }
-            else{
+            } else {
                 binding.txtError.text = validationResult.second
             }
             bindObservers()
         }
     }
 
-    private fun getUserInput(): UserRequest{
+    private fun getUserInput(): UserRequest {
         val username = binding.txtEmail.text.toString()
         val password = binding.txtPassword.text.toString()
-        return UserRequest(username,password)
+        return UserRequest(username, password)
     }
 
-    private fun validateUserInput(): Pair<Boolean, String>{
+    private fun validateUserInput(): Pair<Boolean, String> {
         val userRequest = getUserInput()
-        return mainViewModel.validateCredential(userRequest.username,userRequest.password)
+        return mainViewModel.validateCredential(userRequest.username, userRequest.password)
     }
 
     private fun bindObservers() {
@@ -69,7 +68,8 @@ class LoginFragment : Fragment() {
                     tokenManager.saveToken(it.data!!.token)
                     try {
                         findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
-                    }catch (e:Exception){}
+                    } catch (e: Exception) {
+                    }
                 }
                 is NetworkResult.Error -> {
                     binding.txtError.text = it.message
