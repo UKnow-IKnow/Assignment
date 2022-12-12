@@ -17,7 +17,7 @@ class MessageRepository @Inject constructor(
     val messageLiveData get() = _messageData
 
 
-    private val _statusLiveData = MutableLiveData<NetworkResult<Pair<Boolean, String>>>()
+    private val _statusLiveData = MutableLiveData<NetworkResult<Pair<Boolean, Messages?>>>()
     val statusLiveData get() = _statusLiveData
 
     suspend fun getMessages() {
@@ -38,9 +38,11 @@ class MessageRepository @Inject constructor(
 
     suspend fun postMessage(messageRequest: MessageRequest) {
         _statusLiveData.postValue(NetworkResult.Loading())
-        val response = messageAPI.postMessage(messageRequest)
+        val response = messageAPI.postMessage(messageRequest,  hashMapOf(
+            "X-Branch-Auth-Token" to tokenManager.getToken().toString()
+        ))
         if (response.isSuccessful && response.body() != null) {
-            _statusLiveData.postValue(NetworkResult.Success(Pair(true, "")))
+            _statusLiveData.postValue(NetworkResult.Success(Pair(true, response.body())))
         } else {
             _statusLiveData.postValue(NetworkResult.Error("something wrong"))
         }

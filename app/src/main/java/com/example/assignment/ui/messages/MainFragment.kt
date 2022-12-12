@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -26,12 +28,16 @@ class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-    private val messageViewModel by viewModels<MessageViewModel>()
+    private val messageViewModel by activityViewModels<MessageViewModel>()
 
     @Inject
     lateinit var messageAPI: MessageAPI
 
-    val messageAdapter = MessageAdapter(emptyArray())
+    val messageAdapter = MessageAdapter(emptyArray()){message:Messages->
+        findNavController().navigate(R.id.action_mainFragment_to_conversationFragment, bundleOf(
+            "thread_id" to message.thread_id
+        ))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

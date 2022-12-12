@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/conversationFragment"
-        android:name="com.example.assignment.conversationFragment"
+        android:name="com.example.assignment.ui.messages.ConversationFragment"
         android:label="fragment_conversation"
         tools:layout="@layout/fragment_conversation" />
 </navigation>

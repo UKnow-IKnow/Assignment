@@ -16,5 +16,7 @@ interface MessageAPI {
     ): List<Messages>
 
     @POST("api/messages")
-    suspend fun postMessage(@Body messageRequest: MessageRequest): Response<Messages>
+    suspend fun postMessage(@Body messageRequest: MessageRequest,
+                            @HeaderMap headerMap: HashMap<String, String>
+    ): Response<Messages>
 }

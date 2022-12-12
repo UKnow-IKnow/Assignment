@@ -12,15 +12,7 @@
         android:id="@+id/thread_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Show thread id"
-        android:textColor="#000"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/timeStamp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Show timeStamp"
+        android:text="Show Thread id"
         android:textColor="#000"
         android:textSize="18sp" />
 
